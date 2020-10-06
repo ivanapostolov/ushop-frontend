@@ -1,0 +1,22 @@
+.home {
+    grid-area: main;
+}
+
+.banner {
+    width: 100%;
+    height: 40rem;
+    background-color: #fdce4b;
+    background: linear-gradient(70deg, #fdce4b 30%, #FFAB00 30%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner span {
+    margin: 0.5rem;
+    font-size: 5rem;
+    color: white;
+    border: 0.3rem solid white;
+    padding: 2rem;
+    text-transform: uppercase;
+}
