@@ -1,29 +1,59 @@
 import React from 'react';
 import './Home.css';
 import Product from '../Product/Product';
+import CategoryPin from './components/CategoryPin';
+import { StateContext } from '../StateProvider';
 
-function Home() {
-    return (
-        <div className="home">
-            <div className="banner"><span>Ushop - the best shopping experience</span></div>
+/*{<Product
+    id="0"
+    name="Ball with other additional imformation"
+    imageUrl="http://localhost:8000/shirt.png"
+    price="15.99"
+    amount="10"
+/>*/
 
-            <Product
-                id="0"
-                name="Ball with other additional imformation"
-                imageUrl="http://localhost:8000/shirt.png"
-                price="15.99"
-                amount="10"
-            />
+class Home extends React.Component {
+    constructor(props) {
+        super(props);
 
-            <Product
-                id="0"
-                name="Ball with other additional imformation"
-                imageUrl="http://localhost:8000/shirt.png"
-                price="15.99"
-                amount="10"
-            />
-        </div>
-    );
+        this.state = { pins: [] };
+    }
+
+    static contextType = StateContext;
+
+    componentDidMount() {
+        this.requestPins();
+    }
+
+    requestPins() {
+        const url = `${this.context[0].baseUrl}api/categories`;
+
+        fetch(url, { method: 'GET', headers: { Accept: 'application/json' } }).then(response => {
+            return response.json();
+        }).then(data => {
+            this.setState({ pins: data })
+        }).catch(err => {
+            console.log(err);
+        });
+    }
+
+    render() {
+        const handlePinClick = (name) => {
+            alert(name);
+        }
+
+        const categoryPins = this.state.pins.map(e => <CategoryPin callback={handlePinClick} key={e.id} imageUrl={`http://localhost:8000/category${e.id}.png`} name={e.name} />);
+
+        return (
+            <div className="home">
+                <div className="home__banner"><span>Ushop - the best shopping experience</span></div>
+
+                <div className="home__categories">
+                    {categoryPins}
+                </div>
+            </div>
+        );
+    }
 }
 
 export default Home;

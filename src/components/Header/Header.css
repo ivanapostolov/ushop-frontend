@@ -1,12 +1,15 @@
 .header {
-    grid-area: header;
+    /*grid-area: header;*/
+    flex: 0 0 auto;
     background-color: #314152;
     padding: 1rem;
     min-height: 5rem;
-    position: fixed;
+    position: sticky;
     top: 0;
+    /*top: 0;
     left: 0;
     right: 0;
+    z-index: 100;*/
     z-index: 100;
     display: flex;
     flex-direction: row;
@@ -18,6 +21,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    background-color: #314152;
 }
 
 .header__links a {
@@ -67,6 +71,10 @@
         align-items: stretch;
     }
     .header__links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
         flex-direction: column;
         align-items: stretch;
     }

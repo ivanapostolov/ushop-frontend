@@ -4,7 +4,9 @@
 
 .app {
     height: 100%;
-    display: grid;
+    display: flex;
+    flex-direction: column;
+    /*display: grid;
     grid-template-rows: 7rem auto 5rem;
-    grid-template-areas: "header" "main" "footer";
+    grid-template-areas: "header" "main" "footer";*/
 }

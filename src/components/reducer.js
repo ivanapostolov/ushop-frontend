@@ -5,12 +5,11 @@ export const initialState = {
 };
 
 const reducer = (state, action) => {
-    console.log(action.user);
     switch (action.type) {
         case 'SET_USER':
             return {
                 ...state,
-                user: action.user,
+                user: action.user
             };
             break;
         case 'ADD_TO_BASKET':
@@ -30,7 +29,7 @@ const reducer = (state, action) => {
                 newBasket.splice(index, 1)
             }
 
-            return {...state, basket: newBasket }
+            return { ...state, basket: newBasket }
             break;
         default:
             return state;

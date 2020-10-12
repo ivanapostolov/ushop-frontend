@@ -1,11 +1,11 @@
 import React, { useState, setState } from 'react'
 import './SignForm.css'
-import { BrowserRouter, Route, Link, useHistory } from 'react-router-dom'
+import { Route, Link, useHistory } from 'react-router-dom'
 import { useStateValue } from '../StateProvider';
 
 function SignUp() {
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
+    const { firstName } = useState('');
+    const { lastName } = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -82,13 +82,13 @@ function SignIn() {
 
         request(state.baseUrl + 'auth/sign-in').then(response => {
             const action = {
-                type: 'ADD_TO_BASKET',
-                user: response
+                type: 'SET_USER',
+                user: Object.assign(response, { email: email })
             }
 
             dispatch(action);
 
-            history.push('/');
+            history.push(email === 'admin@admin.com' ? '/admin' : '/');
         }).catch(error => {
             console.log(error);
         });
@@ -124,12 +124,10 @@ function SignIn() {
 
 function SignForm() {
     return (
-        <BrowserRouter>
-            <main className="sign">
-                <Route path="/sign-up" exact={true} component={SignUp} />
-                <Route path="/sign-in" exact={true} component={SignIn} />
-            </main>
-        </BrowserRouter>
+        <main className="sign">
+            <Route path="/sign-up" exact={true} component={SignUp} />
+            <Route path="/sign-in" exact={true} component={SignIn} />
+        </main>
     );
 }
 

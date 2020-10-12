@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useStateValue } from '../StateProvider';
 
 function Header() {
-    const [{ basket }] = useStateValue();
+    const [state] = useStateValue();
 
     const toggleMenu = () => {
         let x = document.getElementById("header");
@@ -19,8 +19,10 @@ function Header() {
         <nav id="header" className="header">
             <div className="header__links">
                 <Link to="/">Home</Link>
-                <Link to="/checkout">Basket ({basket?.length})</Link>
-                <Link to="/sign-in">Sign in</Link>
+                <Link to="/checkout">Basket ({state.basket?.length})</Link>
+                {
+                    state.user ? <Link to="/sign-in">Logout</Link> : <Link to="/sign-in">Sign in</Link>
+                }
             </div>
             <div className="header__search">
                 <input type="text" placeholder="Search..." />
