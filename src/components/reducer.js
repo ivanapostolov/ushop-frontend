@@ -1,5 +1,6 @@
 export const initialState = {
     basket: [],
+    filters: [],
     user: null,
     baseUrl: "http://localhost:8000/"
 };
@@ -30,6 +31,12 @@ const reducer = (state, action) => {
             }
 
             return { ...state, basket: newBasket }
+            break;
+        case 'ADD_FILTER':
+            return {
+                ...state,
+                filters: [...state.filters, action.filter]
+            };
             break;
         default:
             return state;

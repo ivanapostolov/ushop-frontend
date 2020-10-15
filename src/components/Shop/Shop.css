@@ -1,0 +1,10 @@
+.shop {
+    flex: 1 0 auto;
+}
+
+.shop__productsContainer {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}

@@ -38,11 +38,16 @@ class Home extends React.Component {
     }
 
     render() {
-        const handlePinClick = (name) => {
-            alert(name);
+        const handlePinClick = (id) => {
+            const action = {
+                type: 'ADD_FILTER',
+                filter: { categoryid: id }
+            }
+
+            this.context[1](action);
         }
 
-        const categoryPins = this.state.pins.map(e => <CategoryPin callback={handlePinClick} key={e.id} imageUrl={`http://localhost:8000/category${e.id}.png`} name={e.name} />);
+        const categoryPins = this.state.pins.map(e => <CategoryPin callback={handlePinClick} key={e.id} id={e.id} imageUrl={`${this.context[0].baseUrl}category${e.id}.png`} name={e.name} />);
 
         return (
             <div className="home">

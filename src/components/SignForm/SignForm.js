@@ -17,11 +17,11 @@ function SignUp() {
                 </li>
                 <li>
                     <label>First Name</label>
-                    <input value={firstName} type="email" onChange={event => setEmail(event.target.value)} />
+                    <input value={firstName} type="text" onChange={event => setEmail(event.target.value)} />
                 </li>
                 <li>
                     <label>Last Name</label>
-                    <input value={lastName} type="email" onChange={event => setEmail(event.target.value)} />
+                    <input value={lastName} type="text" onChange={event => setEmail(event.target.value)} />
                 </li>
                 <li>
                     <label>Email</label>

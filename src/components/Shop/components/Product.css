@@ -1,0 +1,21 @@
+.product {
+    width: 30rem;
+    height: 45rem;
+    margin: 1rem;
+    padding: 0;
+}
+
+.product__wrapper {
+    position: relative;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-color: #bdbdbd;
+}
+
+.product__image {
+    visibility: hidden;
+    width: 100%;
+    height: auto;
+}

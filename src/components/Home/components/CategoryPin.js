@@ -1,5 +1,6 @@
 import React from 'react';
 import './CategoryPin.css';
+import { Link } from 'react-router-dom'
 
 class CategoryPin extends React.Component {
     constructor(props) {
@@ -9,17 +10,17 @@ class CategoryPin extends React.Component {
     }
 
     handleClick() {
-        this.props.callback(this.props.name);
+        this.props.callback(this.props.id);
     }
 
     render() {
         return (
-            <div className="category" onClick={this.handleClick}>
+            <Link to="/shop" className="category" onClick={this.handleClick}>
                 <div className="category__wrapper" style={{ backgroundImage: `url(${this.props.imageUrl})` }}>
                     <img className="category__image" src={this.props.imageUrl} />
                 </div>
                 <span href="category.html">{this.props.name}</span>
-            </div>
+            </Link>
         );
     }
 }
